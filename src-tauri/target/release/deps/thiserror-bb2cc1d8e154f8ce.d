@@ -1,0 +1,14 @@
+/Users/alexokita/git_repos/openclaw-host-config/src-tauri/target/release/deps/thiserror-bb2cc1d8e154f8ce.d: /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.18/src/lib.rs /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.18/src/aserror.rs /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.18/src/display.rs /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.18/src/var.rs /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.18/src/private.rs /Users/alexokita/git_repos/openclaw-host-config/src-tauri/target/release/build/thiserror-c13227fba9499e26/out/private.rs
+
+/Users/alexokita/git_repos/openclaw-host-config/src-tauri/target/release/deps/libthiserror-bb2cc1d8e154f8ce.rlib: /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.18/src/lib.rs /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.18/src/aserror.rs /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.18/src/display.rs /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.18/src/var.rs /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.18/src/private.rs /Users/alexokita/git_repos/openclaw-host-config/src-tauri/target/release/build/thiserror-c13227fba9499e26/out/private.rs
+
+/Users/alexokita/git_repos/openclaw-host-config/src-tauri/target/release/deps/libthiserror-bb2cc1d8e154f8ce.rmeta: /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.18/src/lib.rs /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.18/src/aserror.rs /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.18/src/display.rs /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.18/src/var.rs /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.18/src/private.rs /Users/alexokita/git_repos/openclaw-host-config/src-tauri/target/release/build/thiserror-c13227fba9499e26/out/private.rs
+
+/Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.18/src/lib.rs:
+/Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.18/src/aserror.rs:
+/Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.18/src/display.rs:
+/Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.18/src/var.rs:
+/Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.18/src/private.rs:
+/Users/alexokita/git_repos/openclaw-host-config/src-tauri/target/release/build/thiserror-c13227fba9499e26/out/private.rs:
+
+# env-dep:OUT_DIR=/Users/alexokita/git_repos/openclaw-host-config/src-tauri/target/release/build/thiserror-c13227fba9499e26/out
