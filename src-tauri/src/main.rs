@@ -74,14 +74,20 @@ fn save_config(config: Config) -> Result<(), String> {
 
 #[tauri::command]
 fn start_gateway() -> Result<String, String> {
-    // TODO: Actually execute openclaw gateway start command
-    Ok("Gateway started successfully".to_string())
+    use std::process::Command;
+    match Command::new("openclaw").arg("gateway").arg("start").spawn() {
+        Ok(_) => Ok("Gateway start initiated".to_string()),
+        Err(e) => Err(format!("Failed to start gateway: {}", e)),
+    }
 }
 
 #[tauri::command]
 fn stop_gateway() -> Result<String, String> {
-    // TODO: Actually execute openclaw gateway stop command
-    Ok("Gateway stopped successfully".to_string())
+    use std::process::Command;
+    match Command::new("openclaw").arg("gateway").arg("stop").spawn() {
+        Ok(_) => Ok("Gateway stop initiated".to_string()),
+        Err(e) => Err(format!("Failed to stop gateway: {}", e)),
+    }
 }
 
 #[tauri::command]

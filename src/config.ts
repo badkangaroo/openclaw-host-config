@@ -5,12 +5,8 @@
  * Main entry point for configuration management
  */
 
-import { readFileSync, writeFileSync, existsSync } from 'fs';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const CONFIG_PATH = '~/.openclaw/config.yaml';
+import { readFileSync, writeFileSync } from 'fs';
+const CONFIG_PATH = '~/.openclaw/config.json';
 
 interface Config {
   gateway: {
