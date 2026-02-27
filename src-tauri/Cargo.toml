@@ -17,4 +17,5 @@ dirs = "5.0"
 tauri-plugin-shell = "2"
 
 [features]
+custom-protocol = ["tauri/custom-protocol"]
 default = ["custom-protocol"]
