@@ -1,0 +1,16 @@
+{
+  "name": "@openclaw/host-config",
+  "version": "0.1.0",
+  "description": "OpenClaw local host configuration tool",
+  "type": "module",
+  "main": "src/config.ts",
+  "bin": {
+    "openclaw-config": "./cli.js"
+  },
+  "scripts": {
+    "start": "node cli.js",
+    "dev": "tsx watch src/config.ts"
+  },
+  "keywords": ["openclaw", "config", "host"],
+  "license": "MIT"
+}
