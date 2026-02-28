@@ -175,6 +175,9 @@ pub fn update_agent_providers_from_openclaw(agent_name: &str) -> Result<(), Stri
         agents_providers.insert(name.clone(), merged);
     }
 
+    // Remove providers that exist in the agent but not in openclaw.json so sync status becomes in_sync.
+    agents_providers.retain(|k, _| openclaw_obj.contains_key(k));
+
     let parent = path.parent().ok_or("invalid path")?;
     if !parent.exists() {
         fs::create_dir_all(parent).map_err(|e| e.to_string())?;

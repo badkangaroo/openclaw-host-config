@@ -100,6 +100,16 @@ cd src-tauri && cargo test
 
 Each Tauri command is a thin wrapper over these modules, so testing the modules covers the behaviour. The **llmfit** integration runs the `llmfit` binary when present; no unit tests for that (optional dependency).
 
+## Repository hygiene
+
+Dependencies are managed via `package.json` and `package-lock.json` only; `node_modules/` is in `.gitignore`. If `node_modules` was ever committed (e.g. on `origin/main`), run the one-time cleanup:
+
+```bash
+./scripts/remove-node-modules-from-git.sh
+git commit -m "chore: remove node_modules from repository; use .gitignore and package.json only"
+git push
+```
+
 ## Configuration Files
 
 - `~/.openclaw/config.yaml` - Main configuration file

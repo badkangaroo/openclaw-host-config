@@ -51,8 +51,8 @@ export default function Agents() {
     setError(null)
     try {
       const [models, status] = await Promise.all([
-        invoke<AgentModelsView | null>('get_agent_models', { args: [name] }),
-        invoke<ProviderSyncStatus>('get_agent_provider_sync_status', { args: [name] }),
+        invoke<AgentModelsView | null>('get_agent_models', { agentName: name }),
+        invoke<ProviderSyncStatus>('get_agent_provider_sync_status', { agentName: name }),
       ])
       setModelsView(models ?? null)
       setSyncStatus(status)
@@ -81,7 +81,7 @@ export default function Agents() {
     setUpdating(true)
     setError(null)
     try {
-      await invoke('update_agent_providers_from_openclaw', { args: [selectedAgent] })
+      await invoke('update_agent_providers_from_openclaw', { agentName: selectedAgent })
       await loadAgentDetail(selectedAgent)
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e))

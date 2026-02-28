@@ -106,7 +106,7 @@ export default function LocalLLMs() {
         invoke<string[]>('get_ollama_models').catch(() => []),
         invoke<string[]>('get_lm_studio_models').catch(() => []),
         invoke<LlmfitSystemJson | null>('get_llmfit_system').catch(() => null),
-        invoke<LlmfitRecommendation[]>('get_llmfit_recommendations', { args: [10] }).catch(() => []),
+        invoke<LlmfitRecommendation[]>('get_llmfit_recommendations', { limit: 10 }).catch(() => []),
       ])
       setDetection(det)
       setSystemInfo(sys)
