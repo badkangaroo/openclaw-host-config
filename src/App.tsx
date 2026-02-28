@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import GatewayStatus from './components/GatewayStatus'
 import ModelManager from './components/ModelManager'
 import ApiKeyManager from './components/ApiKeyManager'
@@ -14,19 +14,19 @@ function App() {
       </header>
 
       <nav className="tabs">
-        <button 
+        <button
           className={activeTab === 'gateway' ? 'active' : ''}
           onClick={() => setActiveTab('gateway')}
         >
           Gateway
         </button>
-        <button 
+        <button
           className={activeTab === 'models' ? 'active' : ''}
           onClick={() => setActiveTab('models')}
         >
           Models
         </button>
-        <button 
+        <button
           className={activeTab === 'api-keys' ? 'active' : ''}
           onClick={() => setActiveTab('api-keys')}
         >
