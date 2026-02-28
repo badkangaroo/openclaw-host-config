@@ -114,6 +114,28 @@ body {
   cursor: not-allowed;
 }
 
+.badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-muted {
+  background: #e2e8f0;
+  color: #64748b;
+}
+
+.badge-success {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.badge-warning {
+  background: #fef3c7;
+  color: #92400e;
+}
+
 .footer {
   text-align: center;
   margin-top: 2rem;

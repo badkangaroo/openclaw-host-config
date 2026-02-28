@@ -1,5 +1,12 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")] // hide console window on Windows
 
+mod agents;
+mod detection;
+mod llmfit;
+mod models_available;
+mod openclaw_config;
+mod system;
+
 use serde::{Deserialize, Serialize};
 use std::fs;
 use std::path::PathBuf;
@@ -133,6 +140,68 @@ fn save_api_key(service: String, key: String) -> Result<(), String> {
     }
 }
 
+// --- Local LLM detection (delegate to detection module) ---
+
+#[tauri::command]
+fn detect_local_llms() -> detection::LocalLLMDetection {
+    detection::detect_local_llms()
+}
+
+#[tauri::command]
+fn get_system_info() -> system::SystemInfo {
+    system::get_system_info()
+}
+
+#[tauri::command]
+fn get_ollama_models() -> Vec<String> {
+    models_available::get_ollama_models()
+}
+
+#[tauri::command]
+fn get_lm_studio_models() -> Vec<String> {
+    models_available::get_lm_studio_models()
+}
+
+#[tauri::command]
+fn get_llmfit_system() -> Option<llmfit::LlmfitSystemJson> {
+    llmfit::get_llmfit_system()
+}
+
+#[tauri::command]
+fn get_llmfit_recommendations(limit: u8) -> Vec<llmfit::LlmfitRecommendation> {
+    llmfit::get_llmfit_recommendations(limit)
+}
+
+#[tauri::command]
+fn get_openclaw_config() -> openclaw_config::OpenClawConfigView {
+    openclaw_config::get_openclaw_config()
+}
+
+#[tauri::command]
+fn update_openclaw_config(updates: openclaw_config::OpenClawConfigUpdates) -> Result<(), String> {
+    openclaw_config::update_openclaw_config(updates)
+}
+
+#[tauri::command]
+fn list_agents() -> Vec<String> {
+    agents::list_agent_names()
+}
+
+#[tauri::command]
+fn get_agent_models(agent_name: String) -> Option<agents::AgentModelsView> {
+    agents::get_agent_models(&agent_name)
+}
+
+#[tauri::command]
+fn get_agent_provider_sync_status(agent_name: String) -> agents::ProviderSyncStatus {
+    agents::get_provider_sync_status(&agent_name)
+}
+
+#[tauri::command]
+fn update_agent_providers_from_openclaw(agent_name: String) -> Result<(), String> {
+    agents::update_agent_providers_from_openclaw(&agent_name)
+}
+
 fn main() {
     tauri::Builder::default()
         .plugin(tauri_plugin_shell::init())
@@ -142,7 +211,19 @@ fn main() {
             start_gateway,
             stop_gateway,
             add_model,
-            save_api_key
+            save_api_key,
+            detect_local_llms,
+            get_system_info,
+            get_ollama_models,
+            get_lm_studio_models,
+            get_llmfit_system,
+            get_llmfit_recommendations,
+            get_openclaw_config,
+            update_openclaw_config,
+            list_agents,
+            get_agent_models,
+            get_agent_provider_sync_status,
+            update_agent_providers_from_openclaw
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

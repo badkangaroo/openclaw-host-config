@@ -9,6 +9,10 @@ A CLI tool for managing and configuring local OpenClaw host setups.
 - Configure model overrides per-session
 - Set up API keys and credentials securely
 - Monitor resource usage and performance metrics
+- **Local LLMs tab:** Detect Ollama, LM Studio, and vLLM (installed + running), list models available on each runtime, show system RAM
+- **llmfit integration:** If [llmfit](https://github.com/AlexsJones/llmfit) is installed (`cargo install llmfit`), show hardware specs and model recommendations that fit your system
+- **OpenClaw tab:** Read and edit `~/.openclaw/openclaw.json`: show **models.providers** (ollama, lmstudio, nvidia-nim, anthropic, etc.), **agents.defaults.model.primary** (dropdown), **agents.defaults.models** (allowlist), **maxConcurrent**, and **subagents** (maxConcurrent, maxSpawnDepth, maxChildrenPerAgent)
+- **Agents tab:** List agents from `~/.openclaw/agents/` (e.g. main, dev). Per-agent: view **agent/agent/models.json** (providers with baseUrl, apiKey, api, models). **Sync status** vs openclaw.json’s models.providers; **Update** button copies openclaw’s provider list into the agent’s models.json (keeps existing apiKey when merging).
 
 ## Usage
 
@@ -78,6 +82,23 @@ npm install && npm run build
 cargo tauri dev          # development (dev server + hot reload)
 cargo tauri build        # production (after frontend is in dist/)
 ```
+
+## Testing
+
+Backend logic is split into testable modules under `src-tauri/src/`:
+
+- **detection.rs** — LLM runtime detection (Ollama, LM Studio, vLLM). Unit tests: `parse_version_line`, `port_open`.
+- **system.rs** — System RAM via `sysinfo`. Unit tests: `bytes_to_human`, `get_system_info`.
+- **models_available.rs** — Ollama `/api/tags` and LM Studio `lms ls`. Unit tests: `parse_ollama_tags_json`, `parse_lm_studio_ls_output`.
+- **openclaw_config.rs** — Read/write `~/.openclaw/openclaw.json`; present `models.providers`, `agents.defaults.model`, `maxConcurrent`, `subagents`. Unit tests: `parse_config_view` (required fields), `get_openclaw_config` (no panic).
+
+Run Rust tests:
+
+```bash
+cd src-tauri && cargo test
+```
+
+Each Tauri command is a thin wrapper over these modules, so testing the modules covers the behaviour. The **llmfit** integration runs the `llmfit` binary when present; no unit tests for that (optional dependency).
 
 ## Configuration Files
 

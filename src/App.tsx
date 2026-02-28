@@ -2,9 +2,12 @@ import { useState } from 'react'
 import GatewayStatus from './components/GatewayStatus'
 import ModelManager from './components/ModelManager'
 import ApiKeyManager from './components/ApiKeyManager'
+import LocalLLMs from './components/LocalLLMs'
+import OpenClawConfig from './components/OpenClawConfig'
+import Agents from './components/Agents'
 
 function App() {
-  const [activeTab, setActiveTab] = useState<'gateway' | 'models' | 'api-keys'>('gateway')
+  const [activeTab, setActiveTab] = useState<'gateway' | 'models' | 'api-keys' | 'local-llms' | 'openclaw' | 'agents'>('gateway')
 
   return (
     <div className="app">
@@ -32,12 +35,33 @@ function App() {
         >
           API Keys
         </button>
+        <button 
+          className={activeTab === 'local-llms' ? 'active' : ''}
+          onClick={() => setActiveTab('local-llms')}
+        >
+          Local LLMs
+        </button>
+        <button 
+          className={activeTab === 'openclaw' ? 'active' : ''}
+          onClick={() => setActiveTab('openclaw')}
+        >
+          OpenClaw
+        </button>
+        <button 
+          className={activeTab === 'agents' ? 'active' : ''}
+          onClick={() => setActiveTab('agents')}
+        >
+          Agents
+        </button>
       </nav>
 
       <main className="content">
         {activeTab === 'gateway' && <GatewayStatus />}
         {activeTab === 'models' && <ModelManager />}
         {activeTab === 'api-keys' && <ApiKeyManager />}
+        {activeTab === 'local-llms' && <LocalLLMs />}
+        {activeTab === 'openclaw' && <OpenClawConfig />}
+        {activeTab === 'agents' && <Agents />}
       </main>
 
       <footer className="footer">
