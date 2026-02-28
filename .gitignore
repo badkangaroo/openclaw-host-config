@@ -1,0 +1,7 @@
+# Dependencies — use package.json and package-lock.json only
+node_modules/
+
+# Build / tooling
+dist/
+*.log
+.DS_Store
