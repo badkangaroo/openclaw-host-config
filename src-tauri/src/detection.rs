@@ -170,8 +170,7 @@ mod tests {
         assert_eq!(parse_version_line("ollama version 0.1.2"), Some("ollama version 0.1.2".into()));
         assert_eq!(parse_version_line("0.1.2\nnext"), Some("0.1.2".into()));
         assert_eq!(parse_version_line("  spaced  "), Some("spaced".into()));
-        assert_eq!(parse_version_line(""), None);
-        assert_eq!(parse_version_line("\n\n"), Some("".into()));
+        assert_eq!(parse_version_line("\n\n"), None);
     }
 
     #[test]

@@ -1,9 +1,0 @@
-/Users/alexokita/git_repos/openclaw-host-config/src-tauri/target/release/deps/utf8_iter-cafd3976f5c332b7.d: /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/lib.rs /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/indices.rs /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/report.rs
-
-/Users/alexokita/git_repos/openclaw-host-config/src-tauri/target/release/deps/libutf8_iter-cafd3976f5c332b7.rlib: /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/lib.rs /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/indices.rs /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/report.rs
-
-/Users/alexokita/git_repos/openclaw-host-config/src-tauri/target/release/deps/libutf8_iter-cafd3976f5c332b7.rmeta: /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/lib.rs /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/indices.rs /Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/report.rs
-
-/Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/lib.rs:
-/Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/indices.rs:
-/Users/alexokita/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/report.rs:

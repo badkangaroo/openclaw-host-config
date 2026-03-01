@@ -2,7 +2,6 @@
 //! Uses Value for round-trip safety; presents a typed view for the UI.
 
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 use std::fs;
 use std::path::PathBuf;
 
@@ -72,7 +71,7 @@ pub fn get_openclaw_config() -> OpenClawConfigView {
         Ok(c) => c,
         Err(_) => return default_view(),
     };
-    parse_config_view(&content).unwrap_or_else(default_view)
+    parse_config_view(&content).unwrap_or_else(|_| default_view())
 }
 
 fn default_view() -> OpenClawConfigView {
@@ -147,7 +146,8 @@ fn parse_config_view(content: &str) -> Result<OpenClawConfigView, ()> {
 }
 
 fn parse_subagents_view(v: &serde_json::Value) -> SubagentsView {
-    let o = v.as_object().unwrap_or(&HashMap::new());
+    let empty_map = serde_json::Map::new();
+    let o = v.as_object().unwrap_or(&empty_map);
     SubagentsView {
         max_concurrent: o.get("maxConcurrent").and_then(|v| v.as_u64()).map(|n| n as u32),
         max_spawn_depth: o.get("maxSpawnDepth").and_then(|v| v.as_u64()).map(|n| n as u32),
