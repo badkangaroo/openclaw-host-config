@@ -202,6 +202,32 @@ fn update_agent_providers_from_openclaw(agent_name: String) -> Result<(), String
     agents::update_agent_providers_from_openclaw(&agent_name)
 }
 
+#[tauri::command]
+fn check_gateway_status() -> Result<bool, String> {
+    use std::process::Command;
+    match Command::new("openclaw")
+        .arg("gateway")
+        .arg("discover")
+        .arg("--json")
+        .arg("--timeout")
+        .arg("500")
+        .output()
+    {
+        Ok(output) => {
+            if output.status.success() {
+                let stdout = String::from_utf8_lossy(&output.stdout);
+                if let Ok(json) = serde_json::from_str::<serde_json::Value>(&stdout) {
+                    if let Some(count) = json.get("count").and_then(|c| c.as_u64()) {
+                        return Ok(count > 0);
+                    }
+                }
+            }
+            Ok(false)
+        }
+        Err(e) => Err(format!("Failed to check gateway status: {}", e)),
+    }
+}
+
 fn main() {
     tauri::Builder::default()
         .plugin(tauri_plugin_shell::init())
@@ -210,6 +236,7 @@ fn main() {
             save_config,
             start_gateway,
             stop_gateway,
+            check_gateway_status,
             add_model,
             save_api_key,
             detect_local_llms,

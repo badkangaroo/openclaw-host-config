@@ -1,5 +1,5 @@
 import { invoke } from '@tauri-apps/api/core'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 interface GatewayStatusProps { }
 
@@ -7,11 +7,27 @@ export default function GatewayStatus({ }: GatewayStatusProps) {
   const [status, setStatus] = useState<'unknown' | 'running' | 'stopped'>('unknown')
   const [loading, setLoading] = useState(false)
 
+  const checkStatus = async () => {
+    try {
+      const isRunning = await invoke<boolean>('check_gateway_status')
+      setStatus(isRunning ? 'running' : 'stopped')
+    } catch (error) {
+      console.error('Failed to check status:', error)
+      setStatus('unknown')
+    }
+  }
+
+  useEffect(() => {
+    checkStatus()
+    const interval = setInterval(checkStatus, 5000)
+    return () => clearInterval(interval)
+  }, [])
+
   const handleStart = async () => {
     setLoading(true)
     try {
       await invoke('start_gateway')
-      setStatus('running')
+      setTimeout(checkStatus, 1000)
     } catch (error) {
       console.error(error)
       alert(`Failed to start gateway: ${error}`)
@@ -24,7 +40,7 @@ export default function GatewayStatus({ }: GatewayStatusProps) {
     setLoading(true)
     try {
       await invoke('stop_gateway')
-      setStatus('stopped')
+      setTimeout(checkStatus, 1000)
     } catch (error) {
       console.error(error)
       alert(`Failed to stop gateway: ${error}`)
